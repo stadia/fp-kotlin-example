@@ -2,10 +2,10 @@ package fp.kotlin.example.chapter01
 
 fun main() {
     val plusCalculator = OopCalculator(Plus())
-    println(plusCalculator.calculate(3, 1))  // 4
+    println(plusCalculator.calculate(3, 1))    // 4
 
     val minusCalculator = OopCalculator(Minus())
-    println(minusCalculator.calculate(3, 1))  // 2
+    println(minusCalculator.calculate(3, 1))    // 2
 }
 
 interface Calculator {
@@ -25,5 +25,11 @@ class Minus : Calculator {
 }
 
 class OopCalculator(private val calculator: Calculator) {
-    fun calculate(num1: Int, num2: Int): Int = calculator.calculate(num1, num2)
+    fun calculate(num1: Int, num2: Int): Int {
+        if (num1 > num2 && num2 != 0) {
+            return calculator.calculate(num1, num2)
+        } else {
+            throw IllegalArgumentException()
+        }
+    }
 }
